@@ -14,7 +14,7 @@ pipeline
 		{
 			steps
 			{
-				bat 'mvn clean install'
+				bat 'mvn test'
 			}
 		}
 		stage('Deploy:::World Timezone Application to CloudHub')
