@@ -12,7 +12,7 @@ http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/htt
 	</http:request-config>
 	<flow name="cicd_world_time_demoFlow" doc:id="dc421185-2728-4058-9c4b-1e5d7b2e569e" >
 		<http:listener doc:name="Listener" doc:id="06824a28-e91a-4bd2-b329-9f15567782d3" config-ref="HTTP_Listener_config" path="/{region}/{city}"/>
-		<logger level="INFO" doc:name="Logger" doc:id="e6aeebab-4c7a-46dd-bb19-fc259e169579" message="Recieved Call from Client"/>
+		<logger level="INFO" doc:name="Logger" doc:id="e6aeebab-4c7a-46dd-bb19-fc259e169579" message="Recieved Call from Client App"/>
 		<http:request method="GET" doc:name="Request" doc:id="bf503fc3-a713-47f4-aaca-03eed6503a9b" config-ref="HTTP_Request_configuration" path="/{region}/{city}">
 			<http:uri-params ><![CDATA[#[output application/java
 ---
