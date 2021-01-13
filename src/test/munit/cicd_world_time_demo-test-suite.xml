@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="cicd_world_time_demo-test-suite.xml" />
+	<flow name="cicd_world_time_demo-test-suiteFlow" doc:id="d5a3d2bb-4c7b-4b60-b474-c8dc169e4406" >
+		<munit:set-event doc:name="Set Event" doc:id="0a14513c-78fa-4189-9bfd-06c826130989">
+				<munit:attributes value="#[{uriParams:{region:'Asia',city:'Kolkata'}}]" />
+			</munit:set-event>
+	</flow>
+	<munit:test name="cicd_world_time_demo-test-suite-cicd_world_time_demoFlowTest" doc:id="3dae845b-8b85-43e2-a02e-b5cb6a8311cf" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="fc3c8183-c4a6-45af-9b4d-d266d00d4b2c" name="cicd_world_time_demo-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to cicd_world_time_demoFlow" doc:id="7db11f80-1318-4af7-a525-90e3385d95eb" name="cicd_world_time_demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="2962438d-8aaa-4d1f-9716-26e5a27b1d58" message="Payload is null" expression="#[payload]" is="#[MunitTools::notNullValue()]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="cicd_world_time_demo-test-suite-cicd_world_time_demoFlowTest1" doc:id="0a39dbc1-8d93-4751-b52d-cd746582ba1d" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="e2b50efe-2e64-4d67-8aaf-811df2efa34e" name="cicd_world_time_demo-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to cicd_world_time_demoFlow" doc:id="d32299ab-063b-46d5-9648-5ebc91d2366b" name="cicd_world_time_demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="4e1c885f-1322-48ca-a97d-30cc7018ff12" expression="#[payload]" is="#[MunitTools::withMediaType('application/json')]" message="Media type is incorrect"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="cicd_world_time_demo-test-suite-cicd_world_time_demoFlowTest2" doc:id="cf42a09f-7172-4e5a-8804-7cda03242c38" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="aa755056-841e-44a6-8160-0d9c60dd811c" name="cicd_world_time_demo-test-suiteFlow"/>
+			<flow-ref doc:name="Flow-ref to cicd_world_time_demoFlow" doc:id="681218da-3e6d-41da-8238-a1a1658dbb67" name="cicd_world_time_demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="35bd494d-f7cd-47e5-b96f-9ebb3809d967" is="#[MunitTools::equalTo(false)]" expression="#[payload.dst]" message="DST is incorrect"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>

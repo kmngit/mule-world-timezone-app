@@ -10,6 +10,13 @@ pipeline
 				bat 'mvn clean install'
 			}
 		}
+		stage('Unit Testing - MUnit:::World Timezone Application')
+		{
+			steps
+			{
+				bat 'mvn clean install'
+			}
+		}
 		stage('Deploy:::World Timezone Application to CloudHub')
 		{
 			steps
