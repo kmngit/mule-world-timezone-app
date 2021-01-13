@@ -89,12 +89,6 @@
             <version>2.3.1</version>
             <classifier>mule-plugin</classifier>
             <scope>test</scope>
-        </dependency>	<dependency>
-            <groupId>com.mulesoft.munit</groupId>
-            <artifactId>munit-tools</artifactId>
-            <version>2.3.1</version>
-            <classifier>mule-plugin</classifier>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
